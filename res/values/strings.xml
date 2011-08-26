@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, newMovieRecommendationActivity!</string>
+    <string name="app_name">Which new movie should I go to?</string>
+</resources>
