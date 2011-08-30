@@ -11,9 +11,16 @@
             android:text="@string/whichMovie" />
             
 <Button android:layout_height="wrap_content"
-            android:text="@string/newMovies" android:layout_width="205dp" android:id="@+id/newMovieButton"/>
+            android:text="@string/newMovies" android:layout_width="205dp" android:id="@+id/newMovieButton"
+            android:onClick="buttonHandler"/>
             
 <Button android:layout_height="wrap_content"
-            android:text="@string/upcomingMovies" android:layout_width="202dp" android:id="@+id/upcomingMovieButton"/>
+            android:text="@string/upcomingMovies" android:layout_width="202dp" android:id="@+id/upcomingMovieButton"
+            android:onClick="buttonHandler"/>
+
+<ListView android:id="@+id/ListView01"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content" />
+
 </LinearLayout>
 
