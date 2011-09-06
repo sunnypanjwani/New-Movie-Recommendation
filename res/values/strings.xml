@@ -4,4 +4,13 @@
     <string name="whichMovie">Which new movie this Friday?</string>
     <string name="newMovies">New Movies</string>
     <string name="upcomingMovies">Upcoming Movies</string>
+    
+    <string name="close">Go Back</string>
+    
+    <string-array name="main_buttons">
+        <item>Which Movie?</item>
+        <item>New Movies released</item>
+        <item>Upcoming Movies</item>
+        
+    </string-array>
 </resources>

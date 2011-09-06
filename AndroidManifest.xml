@@ -14,7 +14,13 @@
             </intent-filter>
         </activity>
 
+      <activity 
+      android:name=".MovieScreen"
+      class=".MovieScreen" android:label="MovieScreen">
+      </activity>
+
     </application>
+    
     
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 </manifest>

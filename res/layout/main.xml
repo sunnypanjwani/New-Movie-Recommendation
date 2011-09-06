@@ -8,7 +8,8 @@
 <Button android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/whichMovie" />
+            android:text="@string/whichMovie"
+            android:onClick="buttonHandler" />
             
 <Button android:layout_height="wrap_content"
             android:text="@string/newMovies" android:layout_width="205dp" android:id="@+id/newMovieButton"
@@ -17,10 +18,9 @@
 <Button android:layout_height="wrap_content"
             android:text="@string/upcomingMovies" android:layout_width="202dp" android:id="@+id/upcomingMovieButton"
             android:onClick="buttonHandler"/>
-
-<ListView android:id="@+id/ListView01"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content" />
+            
+<Button android:layout_height="wrap_content"
+            android:text="@string/close" android:layout_width="202dp" android:id="@+id/closeButton" />
 
 </LinearLayout>
 
