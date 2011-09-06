@@ -15,10 +15,15 @@
         </activity>
 
       <activity 
-      android:name=".MovieScreen"
+      android:name="com.sunny.screen.MovieScreen"
       class=".MovieScreen" android:label="MovieScreen">
       </activity>
 
+	  <activity 
+      android:name="com.sunny.screen.MovieRecommendationScreen"
+      class=".MovieRecommendationScreen" android:label="Your Recommendations!">
+      </activity>
+      
     </application>
     
     
