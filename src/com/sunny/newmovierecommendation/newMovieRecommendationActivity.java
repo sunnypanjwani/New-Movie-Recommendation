@@ -1,8 +1,5 @@
 package com.sunny.newmovierecommendation;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,13 +13,22 @@ import com.facebook.android.DialogError;
 import com.facebook.android.Facebook;
 import com.facebook.android.Facebook.DialogListener;
 import com.facebook.android.FacebookError;
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.types.User;
 import com.sunny.screen.MovieRecommendationScreen;
 import com.sunny.screen.MovieScreen;
 
 public class newMovieRecommendationActivity extends ListActivity {
 
-    Facebook facebook = new Facebook("190033754396514");
-    String gender;
+   
+	
+	 
+	Facebook facebook = new Facebook("190033754396514");
+	
+	String accessToken;
+    
+    User user;
      
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,8 +37,16 @@ public class newMovieRecommendationActivity extends ListActivity {
       
         //sign in using facebook  
         
-      facebook.authorize(this, new DialogListener() {
-            public void onComplete(Bundle values) {}
+      facebook.authorize(this, new String[] { "offline_access", "publish_stream", "email" }, new DialogListener() {
+            
+    	  
+    	    public void onComplete(Bundle values) {
+    	    	if(accessToken==null){
+    	      		accessToken = facebook.getAccessToken();
+    	      		
+    	      	   System.out.println("access token: "+accessToken);
+    	      	}
+    	     }
 
             public void onFacebookError(FacebookError error) {}
 
@@ -42,21 +56,14 @@ public class newMovieRecommendationActivity extends ListActivity {
         });
        
       
+  	FacebookClient facebookClient = new DefaultFacebookClient(accessToken);
+    	  
       //fetch users info from facebook
-      try {
-		
-    	  gender = facebook.request("gender");
-    	  System.out.println("gender is :"+gender);
-		
-      }
-      catch (MalformedURLException e1) {
-		// TODO Auto-generated catch block
-    	  	e1.printStackTrace();
-      } 
-      catch (IOException e1) {
-		// TODO Auto-generated catch block
-      		e1.printStackTrace();
-      }    
+   // get information about the currently logged in user
+	  user = facebookClient.fetchObject("me", User.class);    
+	  
+	  System.out.println("user gender :"+user.getGender());
+     
        
        String[] buttons = getResources().getStringArray(R.array.main_buttons);
        setListAdapter(new ArrayAdapter<String>(this, R.layout.list_view, buttons));
@@ -75,7 +82,7 @@ public class newMovieRecommendationActivity extends ListActivity {
         		}
         		else{
         			
-        			RecommendGenre recGenre = new RecommendGenre(gender);
+        			RecommendGenre recGenre = new RecommendGenre(user.getGender());
         			MovieRecommendationScreen movieRec = new MovieRecommendationScreen();
         			movieRec.setList(recGenre.recommendGenre());
         			Intent i = new Intent(newMovieRecommendationActivity.this, MovieRecommendationScreen.class);
